@@ -1,28 +1,37 @@
-import { GeistSans } from 'geist/font/sans'
-import './globals.css'
+import { GeistSans } from "geist/font/sans";
+import { Pacifico } from "next/font/google";
+import "./globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+
+const pacifico = Pacifico({
+  weight: ["400"],
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-pacifico",
+});
 
 const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
-  : 'http://localhost:3000'
+  : "http://localhost:3000";
 
 export const metadata = {
   metadataBase: new URL(defaultUrl),
-  title: 'Next.js and Supabase Starter Kit',
-  description: 'The fastest way to build apps with Next.js and Supabase',
-}
+  title: "Worky",
+  description: "Project management application",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={GeistSans.className}>
-      <body className="bg-background text-foreground">
-        <main className="min-h-screen flex flex-col items-center">
-          {children}
-        </main>
+    <html lang="en" className={`${GeistSans.className} ${pacifico.variable}`}>
+      <body>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <main>{children}</main>
+        </ThemeProvider>
       </body>
     </html>
-  )
+  );
 }
