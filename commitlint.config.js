@@ -34,8 +34,8 @@ module.exports = {
     ],
   },
   prompt: {
-    useEmoji: true,
-    skipQuestions: ["scope", "breaking", "body"],
+    useEmoji: false,
+    skipQuestions: ["scope", "breaking", "body", "issues"],
     types: [
       {
         value: "feat",
