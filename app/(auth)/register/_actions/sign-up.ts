@@ -1,10 +1,11 @@
-import { createClient } from "@/utils/supabase/server";
+"use server";
+
+import { createClient } from "@/lib/supabase/server";
+import { Response } from "@/types/response";
 import { cookies, headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 export const signUp = async (formData: FormData) => {
-  "use server";
-
   const origin = headers().get("origin");
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
@@ -20,8 +21,20 @@ export const signUp = async (formData: FormData) => {
   });
 
   if (error) {
-    return redirect("/login?message=Could not authenticate user");
+    return {
+      error: {
+        type: "Could not authenticate user.",
+        message: "Verify the email and password, and try again.",
+      },
+      status: 500,
+    } as Response;
   }
 
-  return redirect("/login?message=Check email to continue sign in process");
+  return {
+    success: {
+      type: "You've successfully created an account.",
+      message: "Please checkout your email.",
+    },
+    status: 200,
+  } as Response;
 };
