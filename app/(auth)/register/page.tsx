@@ -24,6 +24,14 @@ import { AlertCircle, CheckCircle2 } from "lucide-react";
 import { Error, Success } from "@/types/response";
 import { yup, yupResolver } from "@/lib/yup/client";
 import { signUp } from "./_actions/sign-up";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 
 type SignUpValues = {
   email: string;
@@ -43,12 +51,7 @@ const schema = yup.object({
 export default function RegisterPage() {
   const [success, setSuccess] = useState<Success | null>(null);
   const [error, setError] = useState<Error | null>(null);
-  const {
-    handleSubmit,
-    register,
-    formState: { errors, isSubmitting },
-  } = useForm<SignUpValues>({
-    mode: "onChange",
+  const methods = useForm<SignUpValues>({
     defaultValues: {
       email: "",
       password: "",
@@ -56,6 +59,11 @@ export default function RegisterPage() {
     },
     resolver: yupResolver(schema),
   });
+  const {
+    control,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = methods;
 
   const onSubmit = async (values: SignUpValues) => {
     const formData = new FormData();
@@ -69,7 +77,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <form noValidate onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)} {...methods}>
       <CardHeader>
         <div>
           <CardTitle className="text-2xl">Welcome!</CardTitle>
@@ -94,50 +102,65 @@ export default function RegisterPage() {
           </Alert>
         )}
         <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            {...register("email")}
-            className="transition duration-300 ease-in-out"
-            id="email"
-            placeholder="name@example.com"
-            required
-            type="email"
+          <FormField
+            control={control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input
+                    className="transition duration-300 ease-in-out"
+                    placeholder="name@example.com"
+                    required
+                    type="email"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-          {errors["email"]?.message && (
-            <Label htmlFor="email" type="error">
-              {errors["email"]?.message}
-            </Label>
-          )}
         </div>
         <div className="space-y-2">
-          <Label htmlFor="password">Password</Label>
-          <Input
-            {...register("password")}
-            className="transition duration-300 ease-in-out"
-            id="password"
-            required
-            type="password"
+          <FormField
+            control={control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input
+                    className="transition duration-300 ease-in-out"
+                    required
+                    type="password"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-          {errors["password"]?.message && (
-            <Label htmlFor="password" type="error">
-              {errors["password"]?.message}
-            </Label>
-          )}
         </div>
         <div className="space-y-2">
-          <Label htmlFor="confirmPassword">Confirm password</Label>
-          <Input
-            {...register("confirmPassword")}
-            className="transition duration-300 ease-in-out"
-            id="confirmPassword"
-            required
-            type="password"
+          <FormField
+            control={control}
+            name="confirmPassword"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Confirm password</FormLabel>
+                <FormControl>
+                  <Input
+                    className="transition duration-300 ease-in-out"
+                    required
+                    type="password"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-          {errors["confirmPassword"]?.message && (
-            <Label htmlFor="confirmPassword" type="error">
-              {errors["confirmPassword"]?.message}
-            </Label>
-          )}
         </div>
       </CardContent>
       <CardFooter>
@@ -154,6 +177,6 @@ export default function RegisterPage() {
           Sign In
         </Link>
       </div>
-    </form>
+    </Form>
   );
 }

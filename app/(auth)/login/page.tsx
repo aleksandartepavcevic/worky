@@ -19,6 +19,15 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
 import { Error } from "@/types/response";
 import { yup, yupResolver } from "@/lib/yup/client";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 
 type SignInValues = {
   email: string;
@@ -27,23 +36,24 @@ type SignInValues = {
 
 const schema = yup.object({
   email: yup.string().email(TYPE_EMAIL).required(REQUIRED_FIELD),
-  password: yup.string().min(6, MIN_PASSWORD).required(REQUIRED_FIELD),
+  password: yup.string().required(REQUIRED_FIELD).min(6, MIN_PASSWORD),
 });
 
 export default function LoginPage() {
   const [error, setError] = useState<Error | null>(null);
-  const {
-    handleSubmit,
-    register,
-    formState: { errors, isSubmitting },
-  } = useForm<SignInValues>({
-    mode: "onChange",
+  const methods = useForm<SignInValues>({
     defaultValues: {
       email: "",
       password: "",
     },
     resolver: yupResolver(schema),
   });
+
+  const {
+    control,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = methods;
 
   const onSubmit = async (values: SignInValues) => {
     const formData = new FormData();
@@ -56,7 +66,7 @@ export default function LoginPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <Form onSubmit={handleSubmit(onSubmit)} {...methods}>
       <CardHeader>
         <div>
           <CardTitle className="text-2xl">Welcome Back!</CardTitle>
@@ -74,35 +84,45 @@ export default function LoginPage() {
           </Alert>
         )}
         <div className="space-y-2">
-          <Label htmlFor="email">Email</Label>
-          <Input
-            {...register("email")}
-            className="transition duration-300 ease-in-out"
-            id="email"
-            placeholder="name@example.com"
-            required
-            type="email"
+          <FormField
+            control={control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input
+                    className="transition duration-300 ease-in-out"
+                    placeholder="name@example.com"
+                    required
+                    type="email"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-          {errors["email"]?.message && (
-            <Label htmlFor="email" type="error">
-              {errors["email"]?.message}
-            </Label>
-          )}
         </div>
         <div className="space-y-2">
-          <Label htmlFor="password">Password</Label>
-          <Input
-            {...register("password")}
-            className="transition duration-300 ease-in-out"
-            id="password"
-            required
-            type="password"
+          <FormField
+            control={control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input
+                    className="transition duration-300 ease-in-out"
+                    required
+                    type="password"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
           />
-          {errors["password"]?.message && (
-            <Label htmlFor="password" type="error">
-              {errors["password"]?.message}
-            </Label>
-          )}
         </div>
         <Link className="text-sm text-right block hover:text-blue-500" href="#">
           Forgot Password?
@@ -122,6 +142,6 @@ export default function LoginPage() {
           Sign Up
         </Link>
       </div>
-    </form>
+    </Form>
   );
 }
