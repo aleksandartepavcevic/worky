@@ -2,6 +2,7 @@ import { GeistSans } from "geist/font/sans";
 import { Pacifico } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const pacifico = Pacifico({
   weight: ["400"],
@@ -31,6 +32,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <main>{children}</main>
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
