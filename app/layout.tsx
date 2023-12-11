@@ -27,10 +27,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${GeistSans.className} ${pacifico.variable}`}>
+    <html
+      lang="en"
+      className={`${GeistSans.className} ${pacifico.variable} scroll-smooth`}
+    >
       <body>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <main>{children}</main>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+          {children}
         </ThemeProvider>
         <SpeedInsights />
       </body>
