@@ -34,7 +34,7 @@ function TypographyP(props: ParagraphElementProps) {
 export const Typography = ({
   variant = "h1",
   className,
-  ...rest
+  ...props
 }: TypographyProps) => {
   const comLit = {
     h1: TypographyH1,
@@ -46,7 +46,7 @@ export const Typography = ({
 
   return (
     <Comp
-      {...rest}
+      {...props}
       className={cn(typographyVariants({ variant, className }))}
     />
   );

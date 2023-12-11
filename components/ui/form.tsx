@@ -22,9 +22,9 @@ type FormProps<TFieldValues extends FieldValues> =
 const Form = <TFieldValues extends FieldValues>({
   children,
   onSubmit,
-  ...rest
+  ...props
 }: FormProps<TFieldValues>) => (
-  <FormProvider {...rest}>
+  <FormProvider {...props}>
     <form noValidate onSubmit={onSubmit}>
       {children}
     </form>
