@@ -129,7 +129,10 @@ export default function LoginPage() {
                 </Link>
             </CardContent>
             <CardFooter className="pt-4">
-                <LoadingButton className="w-full py-2" loading={isSubmitting}>
+                <LoadingButton
+                    type="submit"
+                    className="w-full py-2"
+                    loading={isSubmitting}>
                     Sign in
                 </LoadingButton>
             </CardFooter>

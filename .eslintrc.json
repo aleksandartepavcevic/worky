@@ -50,7 +50,14 @@
         "react/jsx-props-no-spreading": "off", // Allowing spread props
         "react-hooks/rules-of-hooks": "error",
         "react-hooks/exhaustive-deps": "warn",
-        "import/prefer-default-export": "off"
+        "import/prefer-default-export": "off",
+        "no-restricted-imports": [
+            "error",
+            {
+                "patterns": ["@/features/*/*"]
+            }
+        ],
+        "import/no-cycle": "error"
     },
     "settings": {
         "import/resolver": {
