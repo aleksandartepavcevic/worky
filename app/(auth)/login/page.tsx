@@ -90,6 +90,7 @@ export default function LoginPage() {
                                 <FormLabel>Email</FormLabel>
                                 <FormControl>
                                     <Input
+                                        aria-label="Email"
                                         className="transition duration-300 ease-in-out"
                                         placeholder="name@example.com"
                                         required
@@ -111,6 +112,7 @@ export default function LoginPage() {
                                 <FormLabel>Password</FormLabel>
                                 <FormControl>
                                     <Input
+                                        aria-label="Password"
                                         className="transition duration-300 ease-in-out"
                                         required
                                         type="password"

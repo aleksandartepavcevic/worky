@@ -87,7 +87,12 @@ const LoadingButton = React.forwardRef<HTMLButtonElement, LoadingButtonProps>(
             // eslint-disable-next-line react/button-has-type
             type={type}
             {...props}>
-            {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+            {loading && (
+                <Loader2
+                    role="progressbar"
+                    className="mr-2 h-4 w-4 animate-spin"
+                />
+            )}
             {children}
         </button>
     ),
