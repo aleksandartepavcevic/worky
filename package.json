@@ -5,7 +5,9 @@
     "build": "next build",
     "start": "next start",
     "prepare": "husky install",
-    "test": "jest --coverage --passWithNoTests",
+    "jest": "jest --coverage --passWithNoTests",
+    "playwright": "playwright",
+    "test:all": "concurrently -g \"npm:jest\" \"npm:playwright\"",
     "lint": "eslint"
   },
   "config": {
