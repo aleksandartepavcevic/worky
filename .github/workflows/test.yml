@@ -18,7 +18,7 @@ jobs:
             - name: Install Playwright Browsers
               run: npx playwright install --with-deps
             - name: Run Playwright tests
-              run: npx playwright test
+              run: npm run playwright
             - uses: actions/upload-artifact@v3
               if: always()
               with:
@@ -36,4 +36,4 @@ jobs:
             - name: Install dependencies
               run: npm ci
             - name: Run Jest tests
-              run: npm test
+              run: npm run jest
