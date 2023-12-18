@@ -40,7 +40,7 @@ type SignUpValues = {
 
 const schema = yup.object({
     email: yup.string().email(TYPE_EMAIL).required(REQUIRED_FIELD),
-    password: yup.string().min(6, MIN_PASSWORD).required(REQUIRED_FIELD),
+    password: yup.string().required(REQUIRED_FIELD).min(6, MIN_PASSWORD),
     confirmPassword: yup
         .string()
         .oneOf([yup.ref('password')], PASSWORD_MATCH)
@@ -109,6 +109,7 @@ export default function RegisterPage() {
                                 <FormLabel>Email</FormLabel>
                                 <FormControl>
                                     <Input
+                                        aria-label="Email"
                                         className="transition duration-300 ease-in-out"
                                         placeholder="name@example.com"
                                         required
@@ -130,6 +131,7 @@ export default function RegisterPage() {
                                 <FormLabel>Password</FormLabel>
                                 <FormControl>
                                     <Input
+                                        aria-label="Password"
                                         className="transition duration-300 ease-in-out"
                                         required
                                         type="password"
@@ -150,6 +152,7 @@ export default function RegisterPage() {
                                 <FormLabel>Confirm password</FormLabel>
                                 <FormControl>
                                     <Input
+                                        aria-label="Confirm password"
                                         className="transition duration-300 ease-in-out"
                                         required
                                         type="password"
