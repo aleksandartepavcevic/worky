@@ -2,6 +2,7 @@ import { GeistSans } from 'geist/font/sans';
 import { Pacifico } from 'next/font/google';
 import './globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { Analytics } from '@vercel/analytics/react';
 import { ThemeProvider } from '@/components/theme-provider';
 
 const pacifico = Pacifico({
@@ -41,6 +42,7 @@ export default function RootLayout({
                     {children}
                 </ThemeProvider>
                 <SpeedInsights />
+                <Analytics />
             </body>
         </html>
     );
