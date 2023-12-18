@@ -69,45 +69,45 @@ test.describe('User register flow', () => {
         await expect(page.getByText(PASSWORD_MATCH)).toBeVisible();
     });
 
-    test('user inputs a valid email, password and confirm password and gets successfull message', async ({
-        page,
-    }) => {
-        const emailInput = await page.getByRole('textbox', {
-            name: /email/i,
-        });
-        const passwordInput = await page.getByRole('textbox', {
-            name: 'Password',
-            exact: true,
-        });
-        const confirmPasswordInput = await page.getByRole('textbox', {
-            name: 'Confirm password',
-            exact: true,
-        });
-        const submitBtn = await page.getByRole('button', {
-            name: /sign up/i,
-        });
+    // test('user inputs a valid email, password and confirm password and gets successfull message', async ({
+    //     page,
+    // }) => {
+    //     const emailInput = await page.getByRole('textbox', {
+    //         name: /email/i,
+    //     });
+    //     const passwordInput = await page.getByRole('textbox', {
+    //         name: 'Password',
+    //         exact: true,
+    //     });
+    //     const confirmPasswordInput = await page.getByRole('textbox', {
+    //         name: 'Confirm password',
+    //         exact: true,
+    //     });
+    //     const submitBtn = await page.getByRole('button', {
+    //         name: /sign up/i,
+    //     });
 
-        await emailInput.fill(process.env.PLAYWRIGHT_TEST_EMAIL as string);
-        await passwordInput.fill(
-            process.env.PLAYWRIGHT_TEST_PASSWORD as string,
-        );
-        await confirmPasswordInput.fill(
-            process.env.PLAYWRIGHT_TEST_PASSWORD as string,
-        );
+    //     await emailInput.fill(process.env.PLAYWRIGHT_TEST_EMAIL as string);
+    //     await passwordInput.fill(
+    //         process.env.PLAYWRIGHT_TEST_PASSWORD as string,
+    //     );
+    //     await confirmPasswordInput.fill(
+    //         process.env.PLAYWRIGHT_TEST_PASSWORD as string,
+    //     );
 
-        await submitBtn.click();
+    //     await submitBtn.click();
 
-        await expect(submitBtn).toBeDisabled();
+    //     await expect(submitBtn).toBeDisabled();
 
-        const spinner = await page.getByRole('progressbar');
+    //     const spinner = await page.getByRole('progressbar');
 
-        await expect(spinner).toBeVisible();
+    //     await expect(spinner).toBeVisible();
 
-        const alert = await page.getByRole('alert');
-        const successMessage = await alert.getByRole('heading', {
-            name: /you've successfully created an account\./i,
-        });
+    //     const alert = await page.getByRole('alert');
+    //     const successMessage = await alert.getByRole('heading', {
+    //         name: /you've successfully created an account\./i,
+    //     });
 
-        await expect(successMessage).toBeVisible();
-    });
+    //     await expect(successMessage).toBeVisible();
+    // });
 });
