@@ -1,6 +1,5 @@
 import React from 'react';
-import { DashboardAside } from '@/features/dashboard-aside';
-import { DashboardHeader } from '@/features/dashboard-header';
+import { Aside, Header } from '@/features/dashboard';
 
 export const metadata = {
     title: 'Dashboard',
@@ -8,10 +7,10 @@ export const metadata = {
 
 function DashboardLayout({ children }: { children: React.ReactNode }) {
     return (
-        <div className="h-screen flex">
-            <DashboardAside />
+        <div className="h-screen flex bg-dashboard-background">
+            <Aside />
             <div className="w-full flex flex-col">
-                <DashboardHeader />
+                <Header />
                 {children}
             </div>
         </div>

@@ -6,7 +6,7 @@ import AsideContent from './components/aside-content';
 import AsideNavigation from './components/aside-navigation';
 import AsideModelToggle from './components/aside-mode-toggle';
 
-function DashboardAside() {
+function Aside() {
     return (
         <AsideLayout>
             <AsideHeader />
@@ -18,4 +18,4 @@ function DashboardAside() {
     );
 }
 
-export default DashboardAside;
+export default Aside;

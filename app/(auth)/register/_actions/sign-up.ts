@@ -1,15 +1,14 @@
 'use server';
 
-import { cookies, headers } from 'next/headers';
-import { createClient } from '@/lib/supabase/server';
+import { headers } from 'next/headers';
 import { Response } from '@/types/response';
+import { createServerClient } from '@/hooks/supabase';
 
 export const signUp = async (formData: FormData) => {
     const origin = headers().get('origin');
     const email = formData.get('email') as string;
     const password = formData.get('password') as string;
-    const cookieStore = cookies();
-    const supabase = createClient(cookieStore);
+    const supabase = createServerClient();
 
     const { error } = await supabase.auth.signUp({
         email,

@@ -20,7 +20,7 @@ function AsideHeader() {
             initial={false}
             animate={collapsed ? 'collapsed' : 'expanded'}
             variants={wrapperVariants}
-            className="flex items-center justify-between px-4 py-6 border-b-[1px] flex-shrink-0  h-[90px]">
+            className="flex items-center justify-between px-4 py-6 border-b-[1px] flex-shrink-0  h-[89px]">
             <AnimatePresence initial={false} mode="wait">
                 {!collapsed && (
                     <motion.div
