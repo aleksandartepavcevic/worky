@@ -4,11 +4,6 @@ import React from 'react';
 import { MoreVertical } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { CreateProject } from '@/features/create-project';
-import {
-    Popover,
-    PopoverContent,
-    PopoverTrigger,
-} from '@/components/ui/popover';
 import { Button } from '@/components/ui/button';
 import {
     DropdownMenu,
@@ -41,7 +36,6 @@ function ProjectsLayout({ children }: { children: React.ReactNode }) {
                     </DropdownMenuContent>
                 </DropdownMenu>
                 <CreateProject
-                    trigger={false}
                     open={openCreateProjectDialog}
                     onOpenChange={(open) => setOpenCreateProjectDialog(open)}
                 />

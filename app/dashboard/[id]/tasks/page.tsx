@@ -1,12 +1,7 @@
 import React from 'react';
-import NoProjects from '@/features/dashboard/projects/components/no-projects';
 
 function Tasks() {
-    return (
-        <div>
-            <NoProjects />
-        </div>
-    );
+    return <div>Tasks</div>;
 }
 
 export default Tasks;

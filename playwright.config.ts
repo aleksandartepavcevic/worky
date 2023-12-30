@@ -14,6 +14,7 @@ const baseURL = 'http://localhost:3000';
  */
 export default defineConfig({
     testDir: './',
+    testMatch: '**/*.spec.ts',
     /* Run tests in files in parallel */
     fullyParallel: true,
     /* Fail the build on CI if you accidentally left test.only in the source code. */
