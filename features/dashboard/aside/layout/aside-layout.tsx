@@ -2,6 +2,7 @@
 
 import React, { useEffect, useMemo, useState } from 'react';
 import { Variants, motion } from 'framer-motion';
+import { useCookies } from 'react-cookie';
 import AsideContext from '../context/aside-context';
 
 const variants = {
@@ -9,11 +10,16 @@ const variants = {
     expanded: { width: 280 },
 } as Variants;
 
-const asideCollapsed = localStorage.getItem('aside-collapsed');
-
-function AsideLayout({ children }: { children: React.ReactNode }) {
-    const [collapsed, setCollapsed] = useState(
-        JSON.parse(asideCollapsed || 'false'),
+function AsideLayout({
+    children,
+    initialCollapsedValue,
+}: {
+    children: React.ReactNode;
+    initialCollapsedValue?: string;
+}) {
+    const [, setCookie] = useCookies();
+    const [collapsed, setCollapsed] = useState(() =>
+        JSON.parse(initialCollapsedValue || 'false'),
     );
 
     const context = useMemo(
@@ -25,8 +31,8 @@ function AsideLayout({ children }: { children: React.ReactNode }) {
     );
 
     useEffect(() => {
-        localStorage.setItem('aside-collapsed', JSON.stringify(collapsed));
-    }, [collapsed]);
+        setCookie('aside-collapsed', JSON.stringify(collapsed));
+    }, [collapsed, setCookie]);
 
     return (
         <AsideContext.Provider value={context}>
