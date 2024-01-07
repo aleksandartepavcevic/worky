@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Dropdown } from '@/features/user';
 
 function Header() {
     return (
@@ -8,8 +9,9 @@ function Header() {
             <div>
                 <Input />
             </div>
-            <div>
+            <div className="flex items-center gap-4">
                 <Button>Add new task</Button>
+                <Dropdown />
             </div>
         </div>
     );
