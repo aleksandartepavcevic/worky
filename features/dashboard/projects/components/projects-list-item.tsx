@@ -9,15 +9,15 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 function ProjectsListItemName({
     name,
-    key,
+    projectKey,
 }: {
     name: Tables<'projects'>['name'];
-    key: Tables<'projects'>['key'];
+    projectKey: Tables<'projects'>['key'];
 }) {
     return (
         <TableCell className="flex items-center gap-2">
             <Link
-                href={`/dashboard/project/${key}/board`}
+                href={`/dashboard/project/${projectKey}/board`}
                 className="flex items-center gap-2 underline text-primary">
                 <Avatar className="w-8 h-8">
                     <AvatarImage src="https://github.com/shadcn.png" />
@@ -34,7 +34,7 @@ function ProjectsListItem({ project }: { project: Tables<'projects'> }) {
 
     return (
         <TableRow>
-            <ProjectsListItemName name={name} key={key} />
+            <ProjectsListItemName name={name} projectKey={key} />
             <TableCell>{key}</TableCell>
             <TableCell>{parseProjectType(type)}</TableCell>
             <TableCell>Aleksandar Tepavcevic</TableCell>
