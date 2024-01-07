@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useContext } from 'react';
-import { Info } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import {
     Select,
@@ -11,12 +10,6 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
-import {
-    HoverCard,
-    HoverCardContent,
-    HoverCardTrigger,
-} from '@/components/ui/hover-card';
-import Typography from '@/components/ui/typography';
 import { Input } from '@/components/ui/input';
 import {
     FormControl,
@@ -32,6 +25,7 @@ import { yup, yupResolver } from '@/lib/yup/client';
 import { REQUIRED_FIELD } from '@/constants/messages';
 import { createProject } from '../actions/create-project';
 import { Tables } from '@/types/supabase';
+import KeyFormField from './key-form-field';
 
 export type FormValues = Omit<Tables<'projects'>, 'accountId' | 'id'>;
 
@@ -63,6 +57,7 @@ function Form() {
 
         onOpenChange?.(false);
     };
+
     return (
         <FormUI {...methods} onSubmit={handleSubmit(onSubmit)}>
             <div className="grid grid-cols-4 gap-4 py-4">
@@ -89,39 +84,7 @@ function Form() {
                     />
                 </div>
                 <div className="col-span-1">
-                    <FormField
-                        control={control}
-                        name="key"
-                        render={({ field }) => (
-                            <FormItem>
-                                <FormLabel className="inline-flex gap-1">
-                                    Key{' '}
-                                    <HoverCard>
-                                        <HoverCardTrigger asChild>
-                                            <Info className="w-4 h-4 stroke-yellow-500 cursor-pointer" />
-                                        </HoverCardTrigger>
-                                        <HoverCardContent className="text-start font-normal">
-                                            <Typography variant="p">
-                                                Choose a descriptive prefix for
-                                                your project&apos;s issue keys
-                                                to recognize work from this
-                                                project.
-                                            </Typography>
-                                        </HoverCardContent>
-                                    </HoverCard>
-                                </FormLabel>
-                                <FormControl>
-                                    <Input
-                                        aria-label="key"
-                                        type="text"
-                                        id="key"
-                                        required
-                                        {...field}
-                                    />
-                                </FormControl>
-                            </FormItem>
-                        )}
-                    />
+                    <KeyFormField />
                 </div>
                 <div className="col-span-2">
                     <FormField
