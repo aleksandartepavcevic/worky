@@ -11,8 +11,12 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
+import { createServerClient } from '@/hooks/supabase';
 
-function Navigation() {
+async function Navigation() {
+    const supabase = createServerClient();
+    const { data } = await supabase.auth.getSession();
+
     return (
         <nav className="sticky top-0 z-[999] left-0 right-0 ">
             <div className="flex justify-between py-6">
@@ -40,7 +44,11 @@ function Navigation() {
                 <div className="hidden md:flex items-center gap-4">
                     <ModeToggle />
                     <Button asChild>
-                        <Link href="/login">Sing In</Link>
+                        {data.session ? (
+                            <Link href="/dashboard">Dashboard</Link>
+                        ) : (
+                            <Link href="/login">Sing In</Link>
+                        )}
                     </Button>
                 </div>
                 <DropdownMenu>
