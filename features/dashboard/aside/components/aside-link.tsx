@@ -39,7 +39,7 @@ function AsideLink({ text, icon, link }: AsideLinkProps) {
     };
 
     const Icon = iconMap[icon as keyof typeof iconMap];
-    const variant = pathname === link ? 'secondary' : 'ghost';
+    const variant = pathname.includes(link) ? 'secondary' : 'ghost';
 
     return (
         <TooltipProvider>

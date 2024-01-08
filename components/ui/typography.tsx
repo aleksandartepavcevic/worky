@@ -6,7 +6,7 @@ const typographyVariants = cva('scroll-m-20 tracking-tight', {
         variant: {
             h1: 'text-4xl font-extrabold lg:text-5xl',
             h4: 'text-xl font-semibold',
-            p: 'leading-7 [&:not(:first-child)]:mt-6',
+            p: 'leading-7',
         },
     },
     defaultVariants: {

@@ -5,7 +5,7 @@ function AsideNavigation() {
     return (
         <div className="flex flex-col gap-2">
             <AsideLink text="Dashboard" icon="home" link="/dashboard" />
-            <AsideLink text="My tasks" icon="list" link="/dashboard/id/tasks" />
+            <AsideLink text="My tasks" icon="list" link="/tasks" />
             <AsideLink
                 text="Calendar"
                 icon="calendar"
