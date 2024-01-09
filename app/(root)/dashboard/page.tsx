@@ -4,7 +4,7 @@ import { Projects, ProjectsSkeleton } from '@/features/dashboard';
 
 async function DashboardPage() {
     return (
-        <div className="h-full overflow-y-auto px-4 py-6">
+        <div>
             <Typography variant="h4" className="mb-4">
                 Dashboard
             </Typography>
