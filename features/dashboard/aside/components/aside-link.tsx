@@ -42,7 +42,7 @@ function AsideLink({ text, icon, link }: AsideLinkProps) {
     const variant = pathname.includes(link) ? 'secondary' : 'ghost';
 
     return (
-        <TooltipProvider>
+        <TooltipProvider delayDuration={300}>
             <Tooltip>
                 <TooltipTrigger asChild>
                     <Button asChild variant={variant} className="p-0">
@@ -71,7 +71,7 @@ function AsideLink({ text, icon, link }: AsideLinkProps) {
                 <TooltipContent
                     side="right"
                     data-collapsed={collapsed}
-                    className="data-[collapsed=true]:block data-[collapsed=false]:hidden ">
+                    className="data-[collapsed=true]:block data-[collapsed=false]:hidden">
                     {text}
                 </TooltipContent>
             </Tooltip>

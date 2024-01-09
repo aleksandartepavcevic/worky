@@ -19,13 +19,13 @@ function Tab({ name, href }: TabProps) {
             asChild
             variant="tab"
             size="lg"
-            className="relative"
+            className="relative h-14"
             data-active={isActive}>
             <Link href={href}>
                 {name}
                 {isActive ? (
                     <motion.div
-                        className="absolute left-0 top-0 w-full h-1 bg-primary rounded-bl-md rounded-br-md"
+                        className="absolute left-0 top-0 w-full h-[6px] bg-primary rounded-bl-md rounded-br-md"
                         layoutId="line"
                     />
                 ) : null}

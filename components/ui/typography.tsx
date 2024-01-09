@@ -7,6 +7,7 @@ const typographyVariants = cva('scroll-m-20 tracking-tight', {
             h1: 'text-4xl font-extrabold lg:text-5xl',
             h2: 'text-3xl font-semibold',
             h4: 'text-xl font-semibold',
+            h6: 'text-lg font-semibold',
             p: 'leading-7',
         },
     },
@@ -32,6 +33,10 @@ function TypographyH4({ children, ...rest }: HeadingElementProps) {
     return <h4 {...rest}>{children}</h4>;
 }
 
+function TypographyH6({ children, ...rest }: HeadingElementProps) {
+    return <h6 {...rest}>{children}</h6>;
+}
+
 function TypographyP(props: ParagraphElementProps) {
     return <p {...props} />;
 }
@@ -45,6 +50,7 @@ export function Typography({
         h1: TypographyH1,
         h2: TypographyH2,
         h4: TypographyH4,
+        h6: TypographyH6,
         p: TypographyP,
     };
 

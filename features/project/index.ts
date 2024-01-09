@@ -1,5 +1,4 @@
 import { Tabs } from "./tabs";
+import { Kanban } from "./kanban";
 
-const ProjectTabs = Tabs;
-
-export { ProjectTabs }
+export { Tabs, Kanban }

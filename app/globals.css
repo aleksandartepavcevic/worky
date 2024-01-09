@@ -53,6 +53,10 @@
     }
 }
 
+.dashboard-height {
+    height: calc(100vh - 89px);
+}
+
 @layer base {
     * {
         @apply border-border;

@@ -10,9 +10,9 @@ function DashboardLayout({ children }: { children: React.ReactNode }) {
     return (
         <div className="h-screen flex bg-dashboard-background">
             <Aside />
-            <div className="w-full flex flex-col">
+            <div className="w-full min-w-0 flex flex-col">
                 <Header />
-                <div className="h-full overflow-y-auto px-4 py-6">
+                <div className="dashboard-height overflow-y-auto px-4 py-6">
                     <Breadcrumbs />
                     {children}
                 </div>
