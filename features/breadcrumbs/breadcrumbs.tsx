@@ -16,11 +16,17 @@ function Breadcrumbs() {
         <div className="flex items-center gap-2 mb-2">
             {elements.map((el, i) => (
                 <>
-                    <Typography variant="p">
+                    <Typography
+                        variant="p"
+                        className="text-accent-foreground/20">
                         {toFirstLetterUppercase(el)}
                     </Typography>
                     {elements.length !== i + 1 && (
-                        <Typography variant="p">/</Typography>
+                        <Typography
+                            variant="p"
+                            className="text-accent-foreground/20">
+                            /
+                        </Typography>
                     )}
                 </>
             ))}
